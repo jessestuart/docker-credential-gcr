@@ -7,6 +7,8 @@ MOCK_DIR := mock
 # The non-vendor golang sources to validate.
 SRCS = $(go list ./... | grep -v vendor)
 
+GOARCH=arm64
+
 all: clean bin
 
 deps:
@@ -46,7 +48,7 @@ test: clean deps test-bin
 tests-unit: deps
 	@go test -race -timeout 10s -v -tags=unit ./...
 
-vet: 
+vet:
 	@go vet ./...
 
 lint:
