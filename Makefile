@@ -12,10 +12,10 @@ GOARCH=arm64
 all: clean bin
 
 deps:
-	@go get -u -t ./...
+	# @go get -u -t ./...
 
 bin: deps
-	@go build -i -o ${OUT_DIR}/${BINARY_FILENAME} main.go
+	GOARCH=$(GOARCH) go build -i -o ${OUT_DIR}/${BINARY_FILENAME} main.go
 	@echo Binary created: ${OUT_DIR}/${BINARY_FILENAME}
 
 test-bin: deps
